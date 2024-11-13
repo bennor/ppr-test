@@ -3,25 +3,28 @@
 import { useFormStatus } from "react-dom";
 import { updateUUID } from "../actions";
 import { useActionState } from "react";
+import { RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export function UpdateUUIDForm() {
+export function UpdateUUIDForm({ disabled = false }) {
   const [, formAction] = useActionState(updateUUID, undefined);
   return (
     <form action={formAction}>
-      <UpdateUUIDButton />
+      <UpdateUUIDButton disabled={disabled} />
     </form>
   );
 }
 
-function UpdateUUIDButton() {
+function UpdateUUIDButton({ disabled = false }) {
   const { pending } = useFormStatus();
   return (
-    <button
+    <Button
+      className="w-full sm:w-auto"
+      disabled={disabled || pending}
       type="submit"
-      disabled={pending}
-      className="bg-black disabled:bg-gray-500 rounded-sm inline-block px-4 py-2 text-white font-medium"
     >
+      <RefreshCw className="mr-2 h-4 w-4" />
       {pending ? "Updating UUID..." : "Update UUID"}
-    </button>
+    </Button>
   );
 }
