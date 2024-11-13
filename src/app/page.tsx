@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import StaticContent from "./_components/static-content";
 import DynamicUUID from "./_components/dynamic-uuid";
+import { UpdateUUIDForm } from "./_components/update-uuid-form";
 
 export const experimental_ppr = true;
 
@@ -13,6 +14,7 @@ export default function Home() {
         <Suspense fallback={<p>Loading...</p>}>
           <DynamicUUID />
         </Suspense>
+        <UpdateUUIDForm />
       </main>
     </div>
   );

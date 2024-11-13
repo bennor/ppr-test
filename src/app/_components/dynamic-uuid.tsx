@@ -9,7 +9,7 @@ const dateFormat = Intl.DateTimeFormat("en-AU", {
 export default async function DynamicUUID() {
   const cookieStore = await cookies();
   const uuid = cookieStore.get("uuid")?.value;
-  await delay(500);
+  await delay(200);
   const now = new Date();
   const iso = now.toISOString();
   const formatted = dateFormat.format(now);
